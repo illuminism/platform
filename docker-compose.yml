@@ -1,0 +1,17 @@
+db:
+  image: mongo
+  ports:
+    - "27017:27017"
+  restart: always
+web:
+  build: .
+  volumes:
+    - .:/admin
+    - .:/client
+    - .:/server
+  ports:
+    - "4200:4200"
+  tty: true
+  links:
+    - db
+  command: node_modules/.bin/nodemon server/index.js
