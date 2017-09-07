@@ -3,8 +3,17 @@ db:
   ports:
     - "27017:27017"
   restart: always
+node:
+  image: "node:8"
+
+  volumes:
+    - ./:/usr/src/app
+  expose:
+    - "8080"
 web:
   build: .
+  environment:
+    - NODE_ENV=production
   volumes:
     - .:/admin
     - .:/client
