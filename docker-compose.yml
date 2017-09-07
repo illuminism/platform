@@ -3,24 +3,17 @@ db:
   ports:
     - "27017:27017"
   restart: always
-node:
-  image: "node:8"
 
+admin:
+  image: admin_image
   volumes:
-    - ./:/usr/src/app
-  expose:
-    - "8080"
-web:
-  build: .
-  environment:
-    - NODE_ENV=production
-  volumes:
-    - .:/admin
-    - .:/client
-    - .:/server
+    - admin:/var/www
   ports:
-    - "4200:4200"
-  tty: true
-  links:
-    - db
-  command: node_modules/.bin/nodemon server/index.js
+    - 8191:8080
+
+client:
+  image: client_image
+  volumes:
+    - client:/var/www
+  ports:
+    - 8192:8080
