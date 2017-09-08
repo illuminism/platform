@@ -1,19 +1,20 @@
-db:
-  image: mongo
-  ports:
-    - "27017:27017"
-  restart: always
+
+#db:
+#  image: mongo
+#  ports:
+#    - "27017:27017"
+#  restart: always
 
 admin:
-  image: admin_image
+  image: admin
   volumes:
     - admin:/var/www
   ports:
     - 8191:8080
 
-client:
-  image: client_image
-  volumes:
-    - client:/var/www
-  ports:
-    - 8192:8080
+#client:
+#  image: client_image
+#  volumes:
+#    - client:/var/www
+#  ports:
+#    - 8192:8080
