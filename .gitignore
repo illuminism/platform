@@ -1,0 +1,12 @@
+.idea
+.config
+node_modules/
+built/
+dist/
+yarn.lock
+package-lock.json
+**/.DS_Store
+.settings
+**/.vs
+**/.vscode
+!**/.vscode/tasks.json
