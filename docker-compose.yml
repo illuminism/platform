@@ -1,0 +1,6 @@
+server:
+  image: test1
+  volumes:
+    - ./server/src:/var/www/src
+  ports:
+    - 8191:8191
