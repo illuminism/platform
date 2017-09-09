@@ -6,11 +6,11 @@
 #  restart: always
 
 admin:
-  image: admin
+  image: test1
   volumes:
-    - admin:/var/www
+    - ./server/src:/var/www/src
   ports:
-    - 8191:8080
+    - 8191:8191
 
 #client:
 #  image: client_image
