@@ -1,20 +1,6 @@
-
-#db:
-#  image: mongo
-#  ports:
-#    - "27017:27017"
-#  restart: always
-
-admin:
+server:
   image: test1
   volumes:
     - ./server/src:/var/www/src
   ports:
     - 8191:8191
-
-#client:
-#  image: client_image
-#  volumes:
-#    - client:/var/www
-#  ports:
-#    - 8192:8080
