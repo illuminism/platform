@@ -4,7 +4,7 @@ import { HttpException } from '@nestjs/core';
 @Component()
 export class PeopleService {
   private people = [
-    {id: 1, name: 'John Doe'},
+    {id: 1, name: 'John Do2e'},
     {id: 2, name: 'Alice Caeiro'},
     {id: 3, name: 'Who Knows'},
   ];

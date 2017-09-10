@@ -10,5 +10,20 @@ import * as cors from 'cors';
   instance.use(bodyParser.json());
   instance.use(cors());
   const app = await NestFactory.create(ApplicationServer, instance);
-  app.listen(PORT, () => console.info(`hello2 ${PORT}`));
+  app.listen(PORT, () => console.info(`
+  ************************************************
+  ********* Server: http://localhost:4202 ********
+  ************************************************
+       _ _ _                 _             _   _ 
+    (_) | |               (_)           | | (_)
+     _| | |_   _ _ __ ___  _ _ __   __ _| |_ _ 
+    | | | | | | | '_ \` _ \\| | '_ \\ / _\` | __| |
+    | | | | |_| | | | | | | | | | | (_| | |_| |
+    |_|_|_|\\__,_|_| |_| |_|_|_| |_|\\__,_|\\__|_|
+
+  ************************************************
+  ********* Server: http://localhost:4202 ********
+  ************************************************                                         
+  `));
+
 })();
