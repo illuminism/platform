@@ -16,6 +16,11 @@ Make sure this icon is in your [system OS tray](https://www.dropbox.com/help/des
 - windows
 
     - If you **do not** have NodeJS I highly recommend installing [http://scoop.sh/](http://scoop.sh/)
+        - Install Scoop
+            - Open powershell as admin and run:
+                - `iex (new-object net.webclient).downloadstring('https://get.scoop.sh')`
+                    - Note: if you get an error you might need to change the execution policy (i.e. enable Powershell) with `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`
+                - close and re-open powershell
     - Install Yarn:
         - with scoop
             - `scoop install yarn`
@@ -23,8 +28,8 @@ Make sure this icon is in your [system OS tray](https://www.dropbox.com/help/des
                 - `scoop install nvm`
                 - `nvm install latest`
                 
-        - **or** with [install node](https://nodejs.org/en/download/):
-            - `npm install -g yarn`
+        - **or** [install node](https://nodejs.org/en/download/):
+            - then `npm install -g yarn`
 - mac:
     - with node:
         - [https://github.com/creationix/nvm](https://github.com/creationix/nvm)
