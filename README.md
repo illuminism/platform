@@ -54,6 +54,16 @@ Make sure this icon is in your [system OS tray](https://www.dropbox.com/help/des
 - in root directory(`plaform/`) run:
     - `docker-compose up`
     
+
+
+##### Use database
+Get into docker instance:
+    - `docker exec -it mongo bash`
+    - `mongo`
+    - `db // test`
+    - `db.col.insert({"a": 4})`
+    - `db.col.find().pretty()`
+    
     
     
     

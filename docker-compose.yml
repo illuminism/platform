@@ -6,6 +6,8 @@ services:
       - ./server/src:/var/www/src
     ports:
       - 4202:8191
+    networks:
+      - nodeapp-network
 
   client:
     # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
@@ -15,6 +17,8 @@ services:
     ports:
       - 4200:4200
     working_dir: /app
+    networks:
+      - nodeapp-network
     command: ng serve --host 0.0.0.0 --port 4200
 
   admin:
@@ -25,5 +29,15 @@ services:
     ports:
       - 4201:4201
     working_dir: /app
+    networks:
+      - nodeapp-network
     command: ng serve --host 0.0.0.0 --port 4201
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    networks:
+      - nodeapp-network
 
+networks:
+  nodeapp-network:
+    driver: bridge
