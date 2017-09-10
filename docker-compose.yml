@@ -1,6 +1,20 @@
+
 server:
-  image: test1
+  image: server
   volumes:
     - ./server/src:/var/www/src
   ports:
     - 8191:8191
+
+
+client:
+  image: alexsuch/angular-cli:1.4.0-chromium
+  volumes:
+    - ./client/client:/app
+  ports:
+    - 4200:4200
+  working_dir: /app
+  command: ng serve --host 0.0.0.0
+
+
+# docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
