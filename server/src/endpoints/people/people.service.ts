@@ -1,32 +1,35 @@
 import { Component } from '@nestjs/common';
 import { HttpException } from '@nestjs/core';
+import { Person } from './person';
 
 @Component()
 export class PeopleService {
-  private people = [
-    {id: 1, name: 'John Do2e'},
-    {id: 2, name: 'Alice Caeiro'},
-    {id: 3, name: 'Who Knows'},
-  ];
 
-  public getAllPeople() {
-    return Promise.resolve(this.people);
+  public async getAllPeople():Promise<any> {
+    return {data: await Person.find()};
   }
 
   public getPeople(id: number) {
-    const isDefined = (item) => {
-      if (!item) {
-        throw new HttpException(`${item} not found`, 404);
-      }
-      return item;
-    };
-
-    const person = isDefined(this.people.find((p) => p.id === id));
-    return Promise.resolve(person);
+    // const isDefined = (item) => {
+    //   if (!item) {
+    //     throw new HttpException(`${item} not found`, 404);
+    //   }
+    //   return item;
+    // };
+    //
+    // const person = isDefined(this.people.find((p) => p.id === id));
+    // return Promise.resolve(person);
   }
 
-  public addPerson(person) {
-    this.people.push(person);
-    return Promise.resolve();
+  public addPerson(req) {
+    const _person = new Person(req);
+    _person.save((err) => {
+      if (err) {
+        console.error('did not save');
+        return false;
+      }
+      console.info('saveddded');
+      return Promise.resolve();
+    });
   }
 }
