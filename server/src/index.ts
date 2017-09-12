@@ -4,6 +4,7 @@ import * as express from 'express';
 import { ApplicationServer } from './ApplicationServer';
 import * as cors from 'cors';
 import * as mongoose from 'mongoose';
+import { BuilderModule } from './builder/builder.module';
 
 (async () => {
   const PORT = 8191;
@@ -18,6 +19,7 @@ import * as mongoose from 'mongoose';
   instance.use(bodyParser.json());
   instance.use(cors());
   const app = await NestFactory.create(ApplicationServer, instance);
+  const microApp = NestFactory.createMicroservice(BuilderModule, { port: 3000 });
   app.listen(PORT, () => console.info(`
   ************************************************
   ********* Server: http://localhost:4202 ********
