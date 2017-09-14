@@ -32,7 +32,7 @@ function addMiddleware(instance): void {
 
 
 function addMongo(): void {
-  mongoose.connect('mongodb://mongodb:27017/test');
+  mongoose.connect('mongodb://localhost:27017/test');
   (mongoose as any).Promise = Promise;
   mongoose.connection.on('error',
       console.error.bind(console, 'connection error:'));

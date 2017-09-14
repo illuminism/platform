@@ -6,6 +6,7 @@ services:
       - ./server/src:/var/www/src
     ports:
       - 4202:8191
+      - 5667:5667
     networks:
       - nodeapp-network
 

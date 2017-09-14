@@ -10,7 +10,7 @@ export class BuilderEndpointController {
   public sendMessage(@Response() res) {
     const pattern = { cmd: 'add' };
     const data = [ 1, 2, 3, 4, 5 ];
-
+    // return res.status(HttpStatus.OK).json({})
     this.builder.send(pattern, data)
         .subscribe((result) => (res.status as any)(HttpStatus.OK).json({ result }));
 
