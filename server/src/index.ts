@@ -5,7 +5,6 @@ import { ApplicationModule } from './application.module';
 import * as cors from 'cors';
 import * as mongoose from 'mongoose';
 import { Transport } from '@nestjs/microservices';
-import * as builder from './builder';
 
 
 const bootupAscii = `

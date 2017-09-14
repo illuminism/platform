@@ -1,0 +1,10 @@
+import { Module } from '@nestjs/common';
+import { PeopleService } from './people/people.service';
+import { PeopleController } from './people/people.controller';
+import { BuilderEndpointController } from './builder/builder.controller';
+
+@Module({
+  components: [PeopleService],
+  controllers: [ PeopleController, BuilderEndpointController ],
+})
+export class EndpointsModule {}
