@@ -10,7 +10,6 @@ services:
       - nodeapp-network
 
   client:
-    # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
     image: matty0187/illuminism-platform-client
     volumes:
       - ./client:/app
@@ -22,7 +21,6 @@ services:
     command: ng serve --host 0.0.0.0 --port 4200
 
   admin:
-    # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
     image: matty0187/illuminism-platform-client
     volumes:
       - ./admin:/app
