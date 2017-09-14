@@ -9,6 +9,4 @@ import { EndpointsModule } from './endpoints/endpoints.module';
   ],
 })
 export class ApplicationModule {
-
-
 }
