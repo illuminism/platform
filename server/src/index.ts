@@ -4,23 +4,11 @@ import * as express from 'express';
 import { ApplicationServer } from './ApplicationServer';
 import * as cors from 'cors';
 import * as mongoose from 'mongoose';
-import { BuilderModule } from './builder/builder.module';
+import { Transport } from '@nestjs/microservices';
+import * as builder from './builder';
 
-(async () => {
-  const PORT = 8191;
-  const instance = express();
-  mongoose.connect('mongodb://mongodb:27017/test');
-  (<any>mongoose).Promise = Promise;
-  mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-  mongoose.connection.once('open', function() {
-  //   we're connected!
-    console.log('connected');
-  });
-  instance.use(bodyParser.json());
-  instance.use(cors());
-  const app = await NestFactory.create(ApplicationServer, instance);
-  const microApp = NestFactory.createMicroservice(BuilderModule, { port: 3000 });
-  app.listen(PORT, () => console.info(`
+
+const bootupAscii = `
   ************************************************
   ********* Server: http://localhost:4202 ********
   ************************************************
@@ -34,6 +22,43 @@ import { BuilderModule } from './builder/builder.module';
   ************************************************
   ********* Server: http://localhost:4202 ********
   ************************************************                                         
-  `));
+  `;
 
-})();
+
+function addMiddleware(instance): void {
+  instance.use(bodyParser.json());
+  instance.use(cors());
+}
+
+
+function addMongo(): void {
+  mongoose.connect('mongodb://mongodb:27017/test');
+  (mongoose as any).Promise = Promise;
+  mongoose.connection.on('error',
+      console.error.bind(console, 'connection error:'));
+  mongoose.connection.once('openUri', () => {
+    console.log('connected');
+  });
+}
+
+
+function setUpExpress(): void {
+  const instance = express();
+  addMongo();
+  addMiddleware(instance);
+  return instance;
+}
+
+
+async function main(port: number = 8191) {
+  const app = await NestFactory.create(ApplicationServer, setUpExpress());
+  await app.connectMicroservice({ transport: Transport.TCP, });
+  await app.startAllMicroservicesAsync();
+  await app.listen(port, () => console.info(bootupAscii));
+}
+
+/** == ∆ + ENTRY POINT + ∆ == */
+main(8191).then(()=> {
+  // Microservices bootstrap.
+  builder.bootstrap();
+});

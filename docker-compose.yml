@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   server:
-    image: matty0187/illuminism-platform-admin
+    image: matty0187/illuminism-platform-server
     volumes:
       - ./server/src:/var/www/src
     ports:
