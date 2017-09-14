@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   moduleId: module.id,
   selector: 'builder',
   templateUrl: 'builder.component.html',
-  styleUrls:['builder.component.scss']
+  styleUrls:['builder.component.css']
 })
 
 export class BuilderComponent implements OnInit {
@@ -12,6 +12,6 @@ export class BuilderComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 }

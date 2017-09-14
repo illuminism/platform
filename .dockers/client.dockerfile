@@ -1,12 +1,11 @@
-FROM node:8.4.0
-ENV HOME /var/www
-WORKDIR ${HOME}
+FROM alexsuch/angular-cli:base
 
-COPY client/package.json client/package-lock.json client/tsconfig.json client/protractor.conf.js client/karma.conf.js client/.angular-cli.json $HOME/
-COPY client e23/ $HOME/
-
-RUN npm install
-
-EXPOSE 4200
-
-CMD [ "npm", "start" ]
+LABEL authors="Matthew Harwood <matthhar12@gmail.com>, Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>"
+RUN apk update
+RUN apk add add --no-cache --virtual .gyp python make g++ \
+  && yarn global add @angular/cli@1.4.1 \
+  && ng set --global packageManager=yarn \
+  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+  && npm cache clear \
+  && yarn cache clean \
+  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
