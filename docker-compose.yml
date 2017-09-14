@@ -11,7 +11,7 @@ services:
 
   client:
     # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
-    image: alexsuch/angular-cli:1.4.1-chromium
+    image: matty0187/illuminism-platform-client
     volumes:
       - ./client:/app
     ports:
@@ -23,7 +23,7 @@ services:
 
   admin:
     # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
-    image: alexsuch/angular-cli:1.4.1-chromium
+    image: matty0187/illuminism-platform-client
     volumes:
       - ./admin:/app
     ports:
