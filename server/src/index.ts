@@ -52,13 +52,11 @@ function setUpExpress(): void {
 
 async function main(port: number = 8191) {
   const app = await NestFactory.create(ApplicationServer, setUpExpress());
+  builder.bootstrap();
   await app.connectMicroservice({ transport: Transport.TCP, });
   await app.startAllMicroservicesAsync();
   await app.listen(port, () => console.info(bootupAscii));
 }
 
 /** == ∆ + ENTRY POINT + ∆ == */
-main(8191).then(()=> {
-  // Microservices bootstrap.
-  builder.bootstrap();
-});
+main(8191).then(console.log);
