@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
-import { ApplicationServer } from './ApplicationServer';
+import { ApplicationModule } from './application.module';
 import * as cors from 'cors';
 import * as mongoose from 'mongoose';
 import { Transport } from '@nestjs/microservices';
@@ -51,8 +51,8 @@ function setUpExpress(): void {
 
 
 async function main(port: number = 8191) {
-  const app = await NestFactory.create(ApplicationServer, setUpExpress());
-  builder.bootstrap();
+  const app = await NestFactory.create(ApplicationModule, setUpExpress());
+
   await app.connectMicroservice({ transport: Transport.TCP, });
   await app.startAllMicroservicesAsync();
   await app.listen(port, () => console.info(bootupAscii));

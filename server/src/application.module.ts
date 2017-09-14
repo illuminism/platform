@@ -7,7 +7,7 @@ import { BuilderEndpointController } from './endpoints/builder/builder.controlle
   components: [PeopleService],
   controllers: [ PeopleController, BuilderEndpointController ],
 })
-export class ApplicationServer {
+export class ApplicationModule {
 
 
 }
