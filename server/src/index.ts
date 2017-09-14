@@ -52,7 +52,7 @@ function setUpExpress(): void {
 async function main(port: number = 8191) {
   const app = await NestFactory.create(ApplicationModule, setUpExpress());
 
-  await app.connectMicroservice({ transport: Transport.TCP, });
+  await app.connectMicroservice({ transport: Transport.TCP, port: 5667});
   await app.startAllMicroservicesAsync();
   await app.listen(port, () => console.info(bootupAscii));
 }

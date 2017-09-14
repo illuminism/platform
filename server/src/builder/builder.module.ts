@@ -1,9 +1,9 @@
 
 
 import { Module } from '@nestjs/common';
-import { BuildereController } from './builder.controller';
+import { BuilderController } from './builder.controller';
 
 @Module({
-  controllers: [ BuildereController ],
+  controllers: [ BuilderController ],
 })
 export class BuilderModule {}
