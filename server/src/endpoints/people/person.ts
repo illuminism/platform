@@ -10,5 +10,3 @@ export const PersonSchema: Schema = new Schema({
   firstName: String,
   lastName: String
 });
-
-export const Person: Model<IPersonModel> = model<IPersonModel>("Person", PersonSchema);
