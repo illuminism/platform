@@ -1,6 +1,7 @@
 import { Component } from '@nestjs/common';
 import { HttpException } from '@nestjs/core';
-import { Person } from './person';
+import { Person } from '../../index';
+
 
 @Component()
 export class PeopleService {
