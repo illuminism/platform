@@ -1,17 +1,17 @@
 version: "3.2"
 services:
   server:
-    image: matty0187/illuminism-platform-admin
+    image: matty0187/illuminism-platform-server
     volumes:
       - ./server/src:/var/www/src
     ports:
       - 4202:8191
+      - 5667:5667
     networks:
       - nodeapp-network
 
   client:
-    # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
-    image: alexsuch/angular-cli:1.4.0-chromium
+    image: matty0187/illuminism-platform-client
     volumes:
       - ./client:/app
     ports:
@@ -22,8 +22,7 @@ services:
     command: ng serve --host 0.0.0.0 --port 4200
 
   admin:
-    # docker run -it --rm -w /app -v $(pwd)/client:/app -p 4200:4200 alexsuch/angular-cli:1.4.0-chromium ng serve --host 0.0.0.0
-    image: alexsuch/angular-cli:1.4.0-chromium
+    image: matty0187/illuminism-platform-client
     volumes:
       - ./admin:/app
     ports:

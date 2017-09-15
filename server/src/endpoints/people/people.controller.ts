@@ -19,7 +19,7 @@ export class PeopleController {
   }
 
   @Post()
-  public async addUser(@Response() res, @Body() person) {
+  public async addPerson(@Response() res, @Body() person) {
     const msg = await this.peopleService.addPerson(person);
     return res.status(HttpStatus.CREATED).json(msg)
   }

@@ -64,6 +64,12 @@ Get into docker instance:
     - `db.col.insert({"a": 4})`
     - `db.col.find().pretty()`
     
+##### Useful docker commands:
+
+- Get into box:
+  - Windows: `docker exec -it platform_admin_1 /bin/sh`
+  - Mac: `docker exec -it platform_admin_1 bash`
+    
     
     
     

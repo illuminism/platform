@@ -1,12 +1,13 @@
 import { Component } from '@nestjs/common';
-import { HttpException } from '@nestjs/core';
 import { Person } from './person';
+
 
 @Component()
 export class PeopleService {
 
   public async getAllPeople():Promise<any> {
-    return {data: await Person.find()};
+    const p = await Person;
+    return {data: await p.find()};
   }
 
   public getPeople(id: number) {
@@ -22,14 +23,14 @@ export class PeopleService {
   }
 
   public addPerson(req) {
-    const _person = new Person(req);
-    _person.save((err) => {
-      if (err) {
-        console.error('did not save');
-        return false;
-      }
-      console.info('saveddded');
-      return Promise.resolve();
-    });
+    // const _person = new Person(req);
+    // _person.save((err) => {
+    //   if (err) {
+    //     console.error('did not save');
+    //     return false;
+    //   }
+    //   console.info('saveddded');
+    //   return Promise.resolve();
+    // });
   }
 }
