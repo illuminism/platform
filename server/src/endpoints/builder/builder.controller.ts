@@ -1,7 +1,6 @@
 import {
   Body,
-  Controller,
-  Get,
+  Controller, Get,
   HttpStatus,
   Post,
   Response,
@@ -18,13 +17,12 @@ export class BuilderController {
   })
   builder: ClientProxy;
 
-  @Post()
-  public build(@Response() res, @Body() body): Subscription {
+  @Get()
+  public build(@Response() res): Subscription {
     const pattern = { cmd: 'add' };
-    const data = body || [1, 2, 3, 4, 5];
+    const data = [1, 2, 3, 4, 5];
 
     return this.builder.send<number>(pattern, data)
-        .subscribe(
-            (result) => (res.status as any)(HttpStatus.OK).json({ result }));
+        .subscribe((r) => (res.status as any)(HttpStatus.OK).json({ r }));
   }
 }
