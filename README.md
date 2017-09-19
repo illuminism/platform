@@ -34,7 +34,7 @@ Make sure this icon is in your [system OS tray](https://www.dropbox.com/help/des
     - with node:
         - [https://github.com/creationix/nvm](https://github.com/creationix/nvm)
         - `nvm install latest`
-        - `nvm install yarn -g`
+        - `npm install yarn -g`
     - **or** without node and with homebrew and yarn:
         - install [homebrew](https://brew.sh/)
         - `brew install yarn --without-node`
@@ -42,6 +42,9 @@ Make sure this icon is in your [system OS tray](https://www.dropbox.com/help/des
         - [https://github.com/alrra/dotfiles](https://github.com/alrra/dotfiles)
 - linux:
     - [https://github.com/alrra/dotfiles](https://github.com/alrra/dotfiles)
+
+##### CLone the Repo
+- install `git@github.com:illuminism/platform.git`
 
 ##### Go into every project and install dependencies:
 - From cmd or terminal:
