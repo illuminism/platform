@@ -9,8 +9,6 @@ export const builderRoutes: Routes = [
     path: 'builder',
     component: BuilderComponent,
     resolve: {
-      routeState: NavigationResolve,
-      builderState: BuilderResolve
     }
   },
 ];

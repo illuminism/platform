@@ -67,8 +67,8 @@ Get into docker instance:
 ##### Useful docker commands:
 
 - Get into box:
-  - Windows: `docker exec -it platform_admin_1 /bin/sh`
-  - Mac: `docker exec -it platform_admin_1 bash`
+  -`docker exec -it platform_admin_1 /bin/sh`
+
     
     
     

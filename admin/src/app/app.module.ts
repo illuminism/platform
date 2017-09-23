@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BuilderModule } from './+builder/builder.module';
 import { DashboardModule } from './+dashboard/dashboard.module';
+import { ActionReducerMap, StoreModule } from '@ngrx/store';
+
+export const reducers: ActionReducerMap<any> = {};
 
 @NgModule({
   declarations: [
@@ -14,6 +17,7 @@ import { DashboardModule } from './+dashboard/dashboard.module';
     RouterModule,
     BuilderModule,
     DashboardModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [],
   bootstrap: [ AppComponent ],

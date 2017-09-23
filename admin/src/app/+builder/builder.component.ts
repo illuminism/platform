@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { BuildClient } from './actions/builder';
 
 @Component({
   moduleId: module.id,
@@ -13,12 +14,14 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 export class BuilderComponent implements OnInit {
   public builder: any;
   public currentRoute: UrlSegment[];
-  constructor(private route: ActivatedRoute) {
+  constructor(private store: Store<any>) {
   }
 
   ngOnInit() {
-    this.builder = this.route.snapshot.data['builderState'];
-    console.log(this.builder)
-    this.currentRoute = this.route.snapshot.data['routeState'];
+    this.store.select('builder').subscribe(console.log);
+  }
+
+  public hitBuilder(): void {
+    this.store.dispatch(new BuildClient())
   }
 }

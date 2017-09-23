@@ -12,3 +12,4 @@ RUN apk add --no-cache --virtual .gyp \
   && npm cache clear \
   && yarn cache clean \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+RUN npm rebuild node-sass --force
